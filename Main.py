@@ -44,9 +44,34 @@ while True:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 sys.exit();
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    mode="game over"
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
         
         pygame.display.flip()
         clock.tick(70)
+        
+    
+     
+        
+    bg=pygame.image.load('Screen/END.png')     
+        
+    while mode=="game over":
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                sys.exit();
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    mode="start"
+                
+              
+                    
+                    
+            screen.fill((97, 164, 229))
+            screen.blit(bg,[0,0])
+            pygame.display.flip()
+             
+          
