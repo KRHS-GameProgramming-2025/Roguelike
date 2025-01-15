@@ -9,7 +9,8 @@ class baseCharacter():
                  baseDefense = 0, 
                  baseMovespeed = 0, 
                  baseFirerate = 0, 
-                 revivable = False):        
+                 revivable = False):     
+                        
         self.headingX = "none"
         self.headingY = "none"
         
