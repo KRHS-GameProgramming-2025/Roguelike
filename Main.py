@@ -34,6 +34,7 @@ while True:
                      
     bg=pygame.image.load('Screen/BackGround.png')
 
+    Player=baseCharacter("Sprite/Placeholders/placeholder.png", 5)
 
 
 
@@ -50,7 +51,7 @@ while True:
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
-        
+        screen.blit(Player.image,Player.rect)
         pygame.display.flip()
         clock.tick(70)
         
