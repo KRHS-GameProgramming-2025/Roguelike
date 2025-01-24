@@ -20,6 +20,10 @@ class baseCharacter():
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         
+        self.speedx = 0
+        self.speedy = 0
+        self.speed = [self.speedx, self.speedy]
+        
         self.maxSpeed = maxSpeed
         if characterType != None:
             self.kind = characterType
