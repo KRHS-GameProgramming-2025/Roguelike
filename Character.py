@@ -3,8 +3,8 @@ import pygame
 class baseCharacter():
     def __init__(self,
                  image, 
-                 startPosition = [0, 0]):
-        self.__init__(self, "placeholder.png", [0,0], startPos)
+                 startPosition = [0, 0],
+                 characterType = None):
         self.imagesUp = [pygame.image.load("placeholder.png")]
         self.imagesUpRight = [pygame.image.load("placeholder.png")]
         self.imagesRight = [pygame.image.load("placeholder.png")]
@@ -20,7 +20,10 @@ class baseCharacter():
         self.rect = self.image.get_rect()
         
         self.maxSpeed = maxSpeed
-        self.kind = "player"
+        if characterType != None:
+            self.kind = characterType
+        elif characterType == None:
+            self.kind = "None"
         
         self.headingX = "none"
         self.headingY = "none"
@@ -64,6 +67,7 @@ class baseCharacter():
                 self.headingY = "none"
                 
     def aim(self, direction):
+        
         if direction == "left":
             self.pointingX = "left"
         elif direction == "right":
@@ -86,4 +90,21 @@ class baseCharacter():
             if self.pointingY == "down":
                 self.pointingY = "none"
                 
+        elif self.pointingX == "none" and self.pointingY == "up":
+            self.images = self.imagesUp
+        elif self.pointingX == "right" and self.pointingY == "up":
+            self.images = self.imagesUpRight
+        elif self.pointingX == "right" and self.pointingY == "none":
+            self.images = self.imagesRight
+        elif self.pointingX == "right" and self.pointingY == "down":
+            self.images = self.imagesDownRight
+        elif self.pointingX == "none" and self.pointingY == "down":
+            self.images = self.imagesDown
+        elif self.pointingX == "left" and self.pointingY == "down":
+            self.images = self.imagesDownLeft
+        elif self.pointingX == "left" and self.pointingY == "none":
+            self.images = self.imagesLeft
+        elif self.pointingX == "left" and self.pointingY == "up":
+            self.images = self.imagesUpLeft
+            
         self.image = self.images[self.frame]
