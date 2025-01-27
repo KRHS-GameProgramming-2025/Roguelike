@@ -6,14 +6,14 @@ class baseCharacter():
                  maxSpeed,
                  startPosition = [0, 0],
                  characterType = None):
-        self.imagesUp = [pygame.image.load(image)]
-        self.imagesUpRight = [pygame.image.load(image)]
-        self.imagesRight = [pygame.image.load(image)]
-        self.imagesDownRight = [pygame.image.load(image)]
-        self.imagesDown = [pygame.image.load(image)]
-        self.imagesDownLeft = [pygame.image.load(image)]
-        self.imagesLeft = [pygame.image.load(image)]
-        self.imagesUpLeft = [pygame.image.load(image)]
+        self.imagesUp = [pygame.image.load(image + "Up" + ".png")]
+        self.imagesUpRight = [pygame.image.load(image + "UpRight" + ".png")]
+        self.imagesRight = [pygame.image.load(image + "Right" + ".png")]
+        self.imagesDownRight = [pygame.image.load(image + "DownRight" + ".png")]
+        self.imagesDown = [pygame.image.load(image + "Down" + ".png")]
+        self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
+        self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
+        self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
         self.images = self.imagesUp
         self.frame = 0
         self.frameMax = len(self.images)-1
@@ -72,6 +72,7 @@ class baseCharacter():
                 self.headingY = "none"
                 
     def aim(self, direction):
+        print(direction)
         if direction == "left":
             self.pointingX = "left"
         elif direction == "right":
@@ -94,7 +95,7 @@ class baseCharacter():
             if self.pointingY == "down":
                 self.pointingY = "none"
                 
-        elif self.pointingX == "none" and self.pointingY == "up":
+        if self.pointingX == "none" and self.pointingY == "up":
             self.images = self.imagesUp
         elif self.pointingX == "right" and self.pointingY == "up":
             self.images = self.imagesUpRight
