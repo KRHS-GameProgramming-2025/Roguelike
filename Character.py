@@ -6,14 +6,14 @@ class baseCharacter():
                  maxSpeed,
                  startPosition = [0, 0],
                  characterType = None):
-        self.imagesUp = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesUpRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDownRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDown = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDownLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesUpLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
+        self.imagesUp = [pygame.image.load(image)]
+        self.imagesUpRight = [pygame.image.load(image)]
+        self.imagesRight = [pygame.image.load(image)]
+        self.imagesDownRight = [pygame.image.load(image)]
+        self.imagesDown = [pygame.image.load(image)]
+        self.imagesDownLeft = [pygame.image.load(image)]
+        self.imagesLeft = [pygame.image.load(image)]
+        self.imagesUpLeft = [pygame.image.load(image)]
         self.images = self.imagesUp
         self.frame = 0
         self.frameMax = len(self.images)-1
@@ -34,7 +34,7 @@ class baseCharacter():
         self.headingY = "none"
         self.pointingX = "none"
         self.pointingY = "up"
-    
+
     def move(self):
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
@@ -112,3 +112,26 @@ class baseCharacter():
             self.images = self.imagesUpLeft
             
         self.image = self.images[self.frame]
+    
+    def wallCollide(self, size):
+        width = size[0]
+        height = size[1]
+        if self.rect.bottom > height:
+            self.speedy = -self.speedy
+            self.move()
+            self.speedy = 0
+                
+        if self.rect.right > width:
+            self.speedx = -self.speedx
+            self.move()
+            self.speedx = 0
+
+        if self.rect.top < 0:
+            self.speedy = -self.speedy
+            self.move()
+            self.speedy = 0
+                
+        if self.rect.left < 0:
+            self.speedx = -self.speedx
+            self.move()
+            self.speedx = 0

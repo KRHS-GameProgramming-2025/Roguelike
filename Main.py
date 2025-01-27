@@ -80,6 +80,7 @@ while True:
                     player.aim("sDown")
         
         player.move()
+        player.wallCollide(size)
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
