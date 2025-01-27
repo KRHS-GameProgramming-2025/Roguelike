@@ -6,14 +6,14 @@ class baseCharacter():
                  maxSpeed,
                  startPosition = [0, 0],
                  characterType = None):
-        self.imagesUp = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesUpRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDownRight = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDown = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesDownLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
-        self.imagesUpLeft = [pygame.image.load("Sprite/Placeholders/placeholder.png")]
+        self.imagesUp = [pygame.image.load("Sprite/Placeholders/placeholder UU.png")]
+        self.imagesUpRight = [pygame.image.load("Sprite/Placeholders/placeholder UR.png")]
+        self.imagesRight = [pygame.image.load("Sprite/Placeholders/placeholder RR.png")]
+        self.imagesDownRight = [pygame.image.load("Sprite/Placeholders/placeholder DR.png")]
+        self.imagesDown = [pygame.image.load("Sprite/Placeholders/placeholder DD.png")]
+        self.imagesDownLeft = [pygame.image.load("Sprite/Placeholders/placeholder DL.png")]
+        self.imagesLeft = [pygame.image.load("Sprite/Placeholders/placeholder LL.png")]
+        self.imagesUpLeft = [pygame.image.load("Sprite/Placeholders/placeholder UL.png")]
         self.images = self.imagesUp
         self.frame = 0
         self.frameMax = len(self.images)-1
