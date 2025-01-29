@@ -11,10 +11,6 @@ screen = pygame.display.set_mode(size)
 
 mode="start"
 
-
-
-
-
 while True:
     bg=pygame.image.load('Screen/Start.png')
     while mode=="start":
@@ -30,16 +26,12 @@ while True:
         
         pygame.display.flip()
         clock.tick(70)
-            
-                     
+
     bg=pygame.image.load('Screen/BackGround.png')
 
-    Player=baseCharacter("Sprite/Placeholders/placeholder.png", 5)
 
-
-
-
-
+    
+    player = baseCharacter("Sprite/Placeholders/placeholder", 5, [0, 0], "player")
 
     while mode=="play":
         for event in pygame.event.get():
@@ -48,18 +40,56 @@ while True:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     mode="game over"
+                if event.key == pygame.K_a:
+                    player.goKey("left")
+                elif event.key == pygame.K_d:
+                    player.goKey("right")
+                elif event.key == pygame.K_w:
+                    player.goKey("up")
+                elif event.key == pygame.K_s:
+                    player.goKey("down")
+                    
+                                #Directionals
+                                
+                elif event.key == pygame.K_LEFT:
+                    player.aim("left")
+                elif event.key == pygame.K_RIGHT:
+                    player.aim("right")
+                elif event.key == pygame.K_UP:
+                    player.aim("up")
+                elif event.key == pygame.K_DOWN:
+                    player.aim("down")
+                
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_a:
+                    player.goKey("sLeft")
+                elif event.key == pygame.K_d:
+                    player.goKey("sRight")
+                elif event.key == pygame.K_w:
+                    player.goKey("sUp")
+                elif event.key == pygame.K_s:
+                    player.goKey("sDown")
+                    
+                elif event.key == pygame.K_LEFT:
+                    player.aim("sLeft")
+                elif event.key == pygame.K_RIGHT:
+                    player.aim("sRight")
+                elif event.key == pygame.K_UP:
+                    player.aim("sUp")
+                elif event.key == pygame.K_DOWN:
+                    player.aim("sDown")
+        
+        player.move()
+        player.wallCollide(size)
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
-        screen.blit(Player.image,Player.rect)
+        screen.blit(player.image,player.rect)
         pygame.display.flip()
         clock.tick(70)
-        
-    
-     
-        
+
     bg=pygame.image.load('Screen/END.png')     
-        
+
     while mode=="game over":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
