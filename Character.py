@@ -14,7 +14,8 @@ class baseCharacter():
         self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
         self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
         self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
-        self.images = self.imagesUp
+        self.imagesNone = [pygame.image.load(image + "None" + ".png")]
+        self.images = self.imagesNone
         self.frame = 0
         self.frameMax = len(self.images)-1
         self.image = self.images[self.frame]
@@ -33,7 +34,7 @@ class baseCharacter():
         self.headingX = "none"
         self.headingY = "none"
         self.pointingX = "none"
-        self.pointingY = "up"
+        self.pointingY = "none"
 
     def move(self):
         self.speed = [self.speedx, self.speedy]
@@ -111,6 +112,8 @@ class baseCharacter():
             self.images = self.imagesLeft
         elif self.pointingX == "left" and self.pointingY == "up":
             self.images = self.imagesUpLeft
+        elif self.pointingX == "none" and self.pointingY == "none":
+            self.images = self.imagesNone
             
         self.image = self.images[self.frame]
     
