@@ -73,7 +73,6 @@ class baseCharacter():
                 self.headingY = "none"
                 
     def aim(self, direction):
-        print(direction)
         if direction == "left":
             self.pointingX = "left"
         elif direction == "right":
