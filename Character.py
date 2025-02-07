@@ -14,7 +14,7 @@ class baseCharacter():
         self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
         self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
         self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
-        self.imagesNone = [pygame.image.load(image + "None" + ".png")]
+        self.imagesNone = [pygame.image.load(image + "Down" + ".png")]
         self.images = self.imagesNone
         self.frame = 0
         self.frameMax = len(self.images)-1

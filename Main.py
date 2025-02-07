@@ -31,7 +31,7 @@ while True:
 
 
     
-    player = baseCharacter("Sprite/Placeholders/placeholder", 5, [0, 0], "player")
+    player = baseCharacter("Sprite/Player/Walt/Walter", 5, [0, 0], "player")
 
     while mode=="play":
         for event in pygame.event.get():
