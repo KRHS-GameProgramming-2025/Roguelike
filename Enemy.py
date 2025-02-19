@@ -1,4 +1,5 @@
-class baseCharacter():
+import pygame
+class Enemy():
     def __init__(self,
                  image,
                  maxSpeed,
@@ -33,9 +34,41 @@ class baseCharacter():
         self.pointingX = "none"
         self.pointingY = "up"
 
-    def move(self):
+    def move(self, target):
+        self.goTo(target)
+        
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
+    
+    def goTo(self, target):
+        tx = target[0]
+        ty = target[1]
+        
+        myX = self.rect.centerx
+        myY = self.rect.centery
+        
+        if myX > tx+20:
+            self.goKey("left")
+            self.aim("left")
+        elif myX < tx-20:
+            self.goKey("right")
+            self.aim("right")
+        else:
+            self.goKey("sLeft")
+            self.aim("sLeft")
+            
+        if myY > ty+20:
+            self.goKey("up")
+            self.aim("up")
+        elif myY < ty-20:
+            self.goKey("down")
+            self.aim("down")
+        else:
+            self.goKey("sUp")
+            self.aim("sUp")     
+            
+        
+        
     
     def goKey(self, direction):
         if direction == "left":
@@ -69,6 +102,48 @@ class baseCharacter():
                 self.speedy = 0
                 self.headingY = "none"
                 
+    def aim(self, direction):
+        if direction == "left":
+            self.pointingX = "left"
+        elif direction == "right":
+            self.pointingX = "right"
+        elif direction == "up":
+            self.pointingY = "up"
+        elif direction == "down":
+            self.pointingY = "down"
+            
+        elif direction == "sLeft":
+            if self.pointingX == "left":
+                self.pointingX = "none"
+        elif direction == "sRight":
+            if self.pointingX == "right":
+                self.pointingX = "none"
+        elif direction == "sUp":
+            if self.pointingY == "up":
+                self.pointingY = "none"
+        elif direction == "sDown":
+            if self.pointingY == "down":
+                self.pointingY = "none"
+                
+        if self.pointingX == "none" and self.pointingY == "up":
+            self.images = self.imagesUp
+        elif self.pointingX == "right" and self.pointingY == "up":
+            self.images = self.imagesUpRight
+        elif self.pointingX == "right" and self.pointingY == "none":
+            self.images = self.imagesRight
+        elif self.pointingX == "right" and self.pointingY == "down":
+            self.images = self.imagesDownRight
+        elif self.pointingX == "none" and self.pointingY == "down":
+            self.images = self.imagesDown
+        elif self.pointingX == "left" and self.pointingY == "down":
+            self.images = self.imagesDownLeft
+        elif self.pointingX == "left" and self.pointingY == "none":
+            self.images = self.imagesLeft
+        elif self.pointingX == "left" and self.pointingY == "up":
+            self.images = self.imagesUpLeft
+        
+            
+        self.image = self.images[self.frame]
                 
     def wallCollide(self, size):
         width = size[0]
