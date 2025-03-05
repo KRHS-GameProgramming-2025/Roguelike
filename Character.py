@@ -1,4 +1,4 @@
-import pygame
+import pygame, math
 
 class baseCharacter():
     def __init__(self,
@@ -19,7 +19,7 @@ class baseCharacter():
         self.frame = 0
         self.frameMax = len(self.images)-1
         self.image = self.images[self.frame]
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center = startPosition)
         
         self.speedx = 0
         self.speedy = 0
@@ -72,47 +72,32 @@ class baseCharacter():
                 self.speedy = 0
                 self.headingY = "none"
                 
-    def aim(self, direction):
-        if direction == "left":
-            self.pointingX = "left"
-        elif direction == "right":
-            self.pointingX = "right"
-        elif direction == "up":
-            self.pointingY = "up"
-        elif direction == "down":
-            self.pointingY = "down"
-            
-        elif direction == "sLeft":
-            if self.pointingX == "left":
-                self.pointingX = "none"
-        elif direction == "sRight":
-            if self.pointingX == "right":
-                self.pointingX = "none"
-        elif direction == "sUp":
-            if self.pointingY == "up":
-                self.pointingY = "none"
-        elif direction == "sDown":
-            if self.pointingY == "down":
-                self.pointingY = "none"
-                
-        if self.pointingX == "none" and self.pointingY == "up":
-            self.images = self.imagesUp
-        elif self.pointingX == "right" and self.pointingY == "up":
-            self.images = self.imagesUpRight
-        elif self.pointingX == "right" and self.pointingY == "none":
+    def aim(self, mPos):
+        m = mPos
+        p = self.rect.center
+        angle = math.degrees(math.atan2(m[1]-p[1], m[0]-p[0]))        
+        
+        if 0 < angle <= 22.5:
             self.images = self.imagesRight
-        elif self.pointingX == "right" and self.pointingY == "down":
+        elif 22.5 < angle <= 67.5:
             self.images = self.imagesDownRight
-        elif self.pointingX == "none" and self.pointingY == "down":
+        elif 67.5 < angle <= 112.5:
             self.images = self.imagesDown
-        elif self.pointingX == "left" and self.pointingY == "down":
+        elif 112.5 < angle <= 157.5:
             self.images = self.imagesDownLeft
-        elif self.pointingX == "left" and self.pointingY == "none":
+        elif 157.5 < angle <= 180:
             self.images = self.imagesLeft
-        elif self.pointingX == "left" and self.pointingY == "up":
+        
+        elif -180 < angle <= -157.5:
+            self.images = self.imagesLeft
+        elif -157.5 < angle <= -112.5:
             self.images = self.imagesUpLeft
-        elif self.pointingX == "none" and self.pointingY == "none":
-            self.images = self.imagesNone
+        elif -112.5 < angle <= -67.5:
+            self.images = self.imagesUp
+        elif -67.5 < angle <= -22.5:
+            self.images = self.imagesUpRight
+        elif -22.5 < angle <= 0:
+            self.images = self.imagesRight
             
         self.image = self.images[self.frame]
     
