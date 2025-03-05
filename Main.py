@@ -31,7 +31,11 @@ while True:
 
 
     
+
     player = baseCharacter("Sprite/Player/Walt/Walter", 5, [0, 0], "player")
+    
+    enemy = Enemy("Sprite/Placeholders/placeholder",3, [50, 50],)
+    
 
     while mode=="play":
         for event in pygame.event.get():
@@ -82,9 +86,12 @@ while True:
         player.move()
         player.wallCollide(size)
         
+        enemy.move(player.rect.center)
+        
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
         screen.blit(player.image,player.rect)
+        screen.blit(enemy.image,enemy.rect)
         pygame.display.flip()
         clock.tick(70)
 
