@@ -32,7 +32,7 @@ while True:
 
     
 
-    player = baseCharacter("Sprite/Player/Walt/Walter", 5, [0, 0], "player")
+    player = baseCharacter("Sprite/Player/Walt/Walter", 5, [800, 500], "player")
     
     enemy = Enemy("Sprite/Placeholders/placeholder",3, [50, 50],)
     
@@ -52,17 +52,6 @@ while True:
                     player.goKey("up")
                 elif event.key == pygame.K_s:
                     player.goKey("down")
-                    
-                                #Directionals
-                                
-                elif event.key == pygame.K_LEFT:
-                    player.aim("left")
-                elif event.key == pygame.K_RIGHT:
-                    player.aim("right")
-                elif event.key == pygame.K_UP:
-                    player.aim("up")
-                elif event.key == pygame.K_DOWN:
-                    player.aim("down")
                 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
@@ -73,15 +62,9 @@ while True:
                     player.goKey("sUp")
                 elif event.key == pygame.K_s:
                     player.goKey("sDown")
-                    
-                elif event.key == pygame.K_LEFT:
-                    player.aim("sLeft")
-                elif event.key == pygame.K_RIGHT:
-                    player.aim("sRight")
-                elif event.key == pygame.K_UP:
-                    player.aim("sUp")
-                elif event.key == pygame.K_DOWN:
-                    player.aim("sDown")
+            
+            elif event.type == pygame.MOUSEMOTION:
+                player.aim(event.pos)
         
         player.move()
         player.wallCollide(size)
