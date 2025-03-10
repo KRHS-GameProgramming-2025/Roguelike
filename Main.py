@@ -76,7 +76,7 @@ while True:
         screen.blit(player.image,player.rect)
         screen.blit(enemy.image,enemy.rect)
         pygame.display.flip()
-        clock.tick(70)
+        clock.tick(60)
 
     bg=pygame.image.load('Screen/END.png')     
 
