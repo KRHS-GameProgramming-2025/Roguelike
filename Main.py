@@ -29,7 +29,7 @@ while True:
 
     bg=pygame.image.load('Screen/BackGround.png')
     
-    player = baseCharacter("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 5, [800, 500], "player")
+    player = baseCharacter("Sprite" + "/" + "Player" + "/" + "Walt" + "/" + "Walter", 5, [800, 500], "player")
     
     enemy = Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],)
     
