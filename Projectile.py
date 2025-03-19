@@ -2,7 +2,7 @@ import pygame, sys, math
 
 class Bullet():
     def __init__(self,owner, speed, startPos=[0,0]):
-        self.image = pygame.image.load( "Bullet/Bullet.png")
+        self.image = pygame.image.load( "Sprite/Placeholders/Projectile/placeholderProjectile1.png")
         self.rect = self.image.get_rect()
         self.speedx = speed[0]
         self.speedy = speed[1]

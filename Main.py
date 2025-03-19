@@ -28,14 +28,13 @@ while True:
         clock.tick(70)
 
     bg=pygame.image.load('Screen/BackGround.png')
-
-
     
-
     player = baseCharacter("Sprite/Player/Walt/Walter", 5, [800, 500], "player")
     
-    enemy = Enemy("Sprite/Placeholders/placeholder",3, [50, 50],)
+    enemy = Enemy("Sprite/Placeholders/placeholder", 3, [50, 50],)
     
+    projectiles = []
+    mousePos = [0,0]
 
     while mode=="play":
         for event in pygame.event.get():
@@ -64,15 +63,29 @@ while True:
                     player.goKey("sDown")
             
             elif event.type == pygame.MOUSEMOTION:
-                player.aim(event.pos)
+                mousePos = event.pos
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    projectiles += [player.fire(event.pos)]
+                mousePos = event.pos
+                
         
         player.move()
+        player.aim(mousePos)
         player.wallCollide(size)
+        
+        print(len(projectiles))
+        for p in projectiles: 
+            p.move()
+            if p.wallCollide(size):
+                projectiles.remove(p)
         
         enemy.move(player.rect.center)
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
+        for p in projectiles: 
+            screen.blit(p.image, p.rect)
         screen.blit(player.image,player.rect)
         screen.blit(enemy.image,enemy.rect)
         pygame.display.flip()

@@ -1,4 +1,5 @@
 import pygame, math
+from Projectile import *
 
 class baseCharacter():
     def __init__(self,
@@ -98,7 +99,7 @@ class baseCharacter():
             self.images = self.imagesUpRight
         elif -22.5 < angle <= 0:
             self.images = self.imagesRight
-            
+        
         self.image = self.images[self.frame]
     
     def wallCollide(self, size):
@@ -123,3 +124,12 @@ class baseCharacter():
             self.speedx = -self.speedx
             self.move()
             self.speedx = 0
+
+    def fire(self, mp):
+        bulletSpeed = 10
+        xdiff = mp[0] - self.rect.center[0]
+        ydiff = mp[1] - self.rect.center[1]
+        angle = math.atan2(ydiff, xdiff)
+        xs = bulletSpeed * math.cos(angle)
+        ys = bulletSpeed * math.sin(angle)
+        return Bullet(self.kind, [xs, ys], self.rect.center)
