@@ -3,13 +3,12 @@ import pygame, sys, math
 class Bullet():
     def __init__(self,owner, speed, startPos=[0,0]):
         self.image = pygame.image.load( "Sprite/Placeholders/Projectile/placeholderProjectile1.png")
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center = startPos)
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
         self.size = (self.rect.height/10 + self.rect.width/10)/2
     
-        self.rect = self.rect.move(startPos)
         self.rad = (self.rect.height/50 + self.rect.width/50)/50
         
         self.owner=owner

@@ -17,7 +17,7 @@ class Enemy():
         self.frame = 0
         self.frameMax = len(self.images)-1
         self.image = self.images[self.frame]
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center = startPosition)
         
         self.speedx = 0
         self.speedy = 0
