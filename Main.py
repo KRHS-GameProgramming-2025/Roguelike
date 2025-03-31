@@ -6,13 +6,13 @@ from Tile import *
 
 pygame.init()
 clock = pygame.time.Clock();
-size= [1800, 1000]
+size= [(220*6), (150*6)]
 screen = pygame.display.set_mode(size)
 
 mode="start"
 
 while True:
-    bg=pygame.image.load('Screen/Start.png')
+    bg=pygame.image.load('Screen/startScreen.png')
     while mode=="start":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -91,7 +91,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
 
-    bg=pygame.image.load('Screen/END.png')     
+    bg=pygame.image.load('Screen/endScreen.png')     
 
     while mode=="game over":
         for event in pygame.event.get():
