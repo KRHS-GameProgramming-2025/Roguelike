@@ -13,6 +13,7 @@ mode="start"
 
 while True:
     bg=pygame.image.load('Screen/startScreen.png')
+    bg=pygame.transform.scale(bg, size)
     while mode=="start":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -28,6 +29,7 @@ while True:
         clock.tick(70)
 
     bg=pygame.image.load('Screen/BackGround.png')
+    bg=pygame.transform.scale(bg, size)
     
     player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 5, [800, 500], "player")
     
@@ -92,7 +94,7 @@ while True:
         clock.tick(60)
 
     bg=pygame.image.load('Screen/endScreen.png')     
-
+    bg=pygame.transform.scale(bg, size)
     while mode=="game over":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
