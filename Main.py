@@ -14,6 +14,8 @@ mode="start"
 while True:
     bg=pygame.image.load('Screen/startScreen.png')
     bg=pygame.transform.scale(bg, size)
+    pygame.mixer.music.load('Sound/Music/breaking_bud.mp3')
+    pygame.mixer.music.play(-1,3.5,0)
     while mode=="start":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -30,6 +32,9 @@ while True:
 
     bg=pygame.image.load('Screen/BackGround.png')
     bg=pygame.transform.scale(bg, size)
+    pygame.mixer.music.load('Sound/Music/roguelike_loop_1.mp3')
+    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.play(-1,0,0)
     
     player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 5, [800, 500], "player")
     
@@ -95,6 +100,7 @@ while True:
 
     bg=pygame.image.load('Screen/endScreen.png')     
     bg=pygame.transform.scale(bg, size)
+    pygame.mixer.music.unload()
     while mode=="game over":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
