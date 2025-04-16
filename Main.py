@@ -100,7 +100,8 @@ while True:
 
     bg=pygame.image.load('Screen/endScreen.png')     
     bg=pygame.transform.scale(bg, size)
-    pygame.mixer.music.unload()
+    pygame.mixer.music.load('Sound/SFX/gong.mp3')
+    pygame.mixer.music.play(-1,0,0)
     while mode=="game over":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
