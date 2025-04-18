@@ -142,7 +142,7 @@ class Enemy():
         elif self.pointingX == "left" and self.pointingY == "up":
             self.images = self.imagesUpLeft
         
-            
+             
         self.image = self.images[self.frame]
                 
     def wallCollide(self, size):

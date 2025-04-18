@@ -36,7 +36,7 @@ while True:
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1,0,0)
     
-    player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 5, [800, 500], "player")
+    player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
     
     enemy = Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],)
     
@@ -44,6 +44,11 @@ while True:
     mousePos = [0,0]
 
     while mode=="play":
+        
+        
+        if player.living==False:
+            mode="game over"
+        
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 sys.exit();
@@ -58,7 +63,13 @@ while True:
                     player.goKey("up")
                 elif event.key == pygame.K_s:
                     player.goKey("down")
-                
+                elif event.key == pygame.K_l:
+                    player.health(-10)
+                    print(player.hp)
+                elif event.key == pygame.K_k:
+                    player.health(10)
+                    print(player.hp)
+                    
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
                     player.goKey("sLeft")
@@ -76,7 +87,7 @@ while True:
                     projectiles += [player.fire(event.pos)]
                 mousePos = event.pos
                 
-        
+    
         player.move()
         player.aim(mousePos)
         player.wallCollide(size)

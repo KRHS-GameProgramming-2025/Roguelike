@@ -36,10 +36,27 @@ class baseCharacter():
         self.headingY = "none"
         self.pointingX = "none"
         self.pointingY = "none"
+        
+        self.hp = 100
+        self.maxhp = 100
+        self.living=True
 
     def move(self):
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
+    
+    
+    def health(self, amount):
+        self.hp += amount
+        if self.hp > self.maxhp:
+            self.hp=self.maxhp
+        if self.hp < 1:
+            self.hp=0
+            self.living=False
+            
+    
+    
+    
     
     def goKey(self, direction):
         if direction == "left":
