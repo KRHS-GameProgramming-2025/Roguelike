@@ -36,12 +36,12 @@ class Bullet():
         
        
     
-    def shipCollide(self,ship):
-        if self.owner !=ship.kind:
-            if ship.rect.left <= self.rect.right:
-                if ship.rect.right >= self.rect.left:
-                    if ship.rect.top <= self.rect.bottom:
-                        if ship.rect.bottom >= self.rect.top:
+    def enemyCollide(self,enemy):
+        if self.owner !=enemy.kind:
+            if enemy.rect.left <= self.rect.right:
+                if enemy.rect.right >= self.rect.left:
+                    if enemy.rect.top <= self.rect.bottom:
+                        if enemy.rect.bottom >= self.rect.top:
                             print('collison')
                             return True
         return False

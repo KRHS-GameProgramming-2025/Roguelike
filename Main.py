@@ -38,7 +38,7 @@ while True:
     
     player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
     
-    enemy = Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],)
+    enemies = [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],)]
     
     projectiles = []
     mousePos = [0,0]
@@ -97,15 +97,24 @@ while True:
             p.move()
             if p.wallCollide(size):
                 projectiles.remove(p)
+            for enemy in enemies:
+                if p.enemyCollide(enemy):
+                    enemy.projectileCollide(p)
+                    projectiles.remove(p)
         
-        enemy.move(player.rect.center)
+        for enemy in enemies:
+            enemy.move(player.rect.center)
+            if not enemy.living:
+                enemies.remove(enemy)
+            
         
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
         for p in projectiles: 
             screen.blit(p.image, p.rect)
         screen.blit(player.image,player.rect)
-        screen.blit(enemy.image,enemy.rect)
+        for enemy in enemies:
+            screen.blit(enemy.image,enemy.rect)
         pygame.display.flip()
         clock.tick(60)
 
