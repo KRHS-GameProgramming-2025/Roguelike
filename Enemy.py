@@ -33,6 +33,10 @@ class Enemy():
         self.headingY = "none"
         self.pointingX = "none"
         self.pointingY = "up"
+        
+        self.hp = 100
+        self.maxhp = 100
+        self.living=True
 
     def move(self, target):
         self.goTo(target)
@@ -66,8 +70,30 @@ class Enemy():
         else:
             self.goKey("sUp")
             self.aim("sUp")     
+    
+    
+    
+    
+    def health(self, amount):
+        self.hp += amount
+        if self.hp > self.maxhp:
+            self.hp=self.maxhp
+        if self.hp < 1:
+            self.hp=0
+            self.living=False
+    
+    
+    
             
-        
+    def projectileCollide(self,projectile):
+        if projectile.rect.left <= self.rect.right:
+            if projectile.rect.right >= self.rect.left:
+                if projectile.rect.top <= self.rect.bottom:
+                    if projectile.rect.bottom >= self.rect.top:
+                        print('collison')
+                        self.health(-20)
+                        return True
+        return False
         
     
     def goKey(self, direction):
