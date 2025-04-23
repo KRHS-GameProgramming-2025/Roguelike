@@ -6,7 +6,7 @@ class baseCharacter():
                  image,
                  maxSpeed,
                  startPosition = [0, 0],
-                 characterType = None):
+                 characterName = None):
         self.imagesUp = [pygame.image.load(image + "Up" + ".png")]
         self.imagesUpRight = [pygame.image.load(image + "UpRight" + ".png")]
         self.imagesRight = [pygame.image.load(image + "Right" + ".png")]
@@ -27,9 +27,9 @@ class baseCharacter():
         self.speed = [self.speedx, self.speedy]
         
         self.maxSpeed = maxSpeed
-        if characterType != None:
-            self.kind = characterType
-        elif characterType == None:
+        if characterName != None:
+            self.kind = characterName
+        elif characterName == None:
             self.kind = "None"
         
         self.headingX = "none"
@@ -143,7 +143,7 @@ class baseCharacter():
             self.speedx = 0
 
     def fire(self, mp):
-        bulletSpeed = 10
+        bulletSpeed = 20
         xdiff = mp[0] - self.rect.center[0]
         ydiff = mp[1] - self.rect.center[1]
         angle = math.atan2(ydiff, xdiff)

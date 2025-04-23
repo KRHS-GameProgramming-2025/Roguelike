@@ -6,7 +6,7 @@ from Tile import *
 
 pygame.init()
 clock = pygame.time.Clock();
-size= [(220*6), (150*6)]
+size=[(100*19), (100*10)]
 screen = pygame.display.set_mode(size)
 
 mode="start"
