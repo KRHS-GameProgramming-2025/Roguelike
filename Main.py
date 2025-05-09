@@ -38,7 +38,10 @@ while True:
     
     player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
     
-    enemies = [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],)]
+    enemies = []
+    #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],),
+    #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [300, 300],)]
+    numEnemies = 2
     
     projectiles = []
     mousePos = [0,0]
@@ -86,7 +89,20 @@ while True:
                 if event.button == 1:
                     projectiles += [player.fire(event.pos)]
                 mousePos = event.pos
-                
+        
+        if len(enemies)==0:
+            for i in range(numEnemies):
+                side = random.randint(0,3)
+                if side == 0:
+                    loc = [random.randint(0, size[0]), 0]
+                elif side == 1:
+                    loc = [random.randint(0, size[0]), size[1]]
+                elif side == 2:
+                    loc = [0, random.randint(0, size[1])]
+                elif side == 3:
+                    loc = [size[0],random.randint(0, size[1])]
+                enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
+            numEnemies += 2
     
         player.move()
         player.aim(mousePos)
@@ -101,6 +117,7 @@ while True:
                 if p.enemyCollide(enemy):
                     enemy.projectileCollide(p)
                     projectiles.remove(p)
+                    break
         
         for enemy in enemies:
             enemy.move(player.rect.center)
