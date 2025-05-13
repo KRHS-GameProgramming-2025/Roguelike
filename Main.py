@@ -28,7 +28,7 @@ while True:
         screen.blit(bg,[0,0])
         
         pygame.display.flip()
-        clock.tick(70)
+        clock.tick(60)
 
     bg=pygame.image.load('Screen/BackGround.png')
     bg=pygame.transform.scale(bg, size)
