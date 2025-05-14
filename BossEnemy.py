@@ -1,18 +1,18 @@
 import pygame
-class Enemy():
+class BossEnemy():
     def __init__(self,
                  image,
                  maxSpeed,
                  startPosition = [0, 0],
                  characterType = None):
-        self.imagesUp = [pygame.image.load(image + "Up" + ".png")]
-        self.imagesUpRight = [pygame.image.load(image + "UpRight" + ".png")]
-        self.imagesRight = [pygame.image.load(image + "Right" + ".png")]
-        self.imagesDownRight = [pygame.image.load(image + "DownRight" + ".png")]
-        self.imagesDown = [pygame.image.load(image + "Down" + ".png")]
-        self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
-        self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
-        self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
+        self.imagesUp = [pygame.image.load(image + "Up" + "BOSS" + ".png")]
+        self.imagesUpRight = [pygame.image.load(image + "UpRight" + "BOSS" + ".png")]
+        self.imagesRight = [pygame.image.load(image + "Right" + "BOSS" + ".png")]
+        self.imagesDownRight = [pygame.image.load(image + "DownRight" + "BOSS" + ".png")]
+        self.imagesDown = [pygame.image.load(image + "Down" + "BOSS" + ".png")]
+        self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + "BOSS" + ".png")]
+        self.imagesLeft = [pygame.image.load(image + "Left" + "BOSS" + ".png")]
+        self.imagesUpLeft = [pygame.image.load(image + "UpLeft" +"BOSS" + ".png")]
         self.images = self.imagesUp
         self.frame = 0
         self.frameMax = len(self.images)-1
@@ -34,8 +34,8 @@ class Enemy():
         self.pointingX = "none"
         self.pointingY = "up"
         
-        self.hp = 100
-        self.maxhp = 100
+        self.hp = 500
+        self.maxhp = 500
         self.living=True
 
     def move(self, target):
