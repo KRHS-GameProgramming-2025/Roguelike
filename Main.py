@@ -121,6 +121,8 @@ while True:
         
         for enemy in enemies:
             enemy.move(player.rect.center)
+            if player.collide(enemy):
+                player.health(-2)
             if not enemy.living:
                 enemies.remove(enemy)
             
