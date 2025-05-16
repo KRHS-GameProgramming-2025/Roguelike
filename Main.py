@@ -1,6 +1,7 @@
 import pygame, sys, math, random
 from Hud import *
 from Enemy import *
+from BossEnemy import *
 from Character import *
 from Tile import *
 
@@ -28,7 +29,7 @@ while True:
         screen.blit(bg,[0,0])
         
         pygame.display.flip()
-        clock.tick(70)
+        clock.tick(60)
 
     bg=pygame.image.load('Screen/BackGround.png')
     bg=pygame.transform.scale(bg, size)
@@ -41,7 +42,10 @@ while True:
     enemies = []
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],),
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [300, 300],)]
-    numEnemies = 2
+    numEnemies = 0
+    numBossEnemies = 0
+
+    numWave = 3
     
     projectiles = []
     mousePos = [0,0]
@@ -91,18 +95,33 @@ while True:
                 mousePos = event.pos
         
         if len(enemies)==0:
-            for i in range(numEnemies):
-                side = random.randint(0,3)
-                if side == 0:
-                    loc = [random.randint(0, size[0]), 0]
-                elif side == 1:
-                    loc = [random.randint(0, size[0]), size[1]]
-                elif side == 2:
-                    loc = [0, random.randint(0, size[1])]
-                elif side == 3:
-                    loc = [size[0],random.randint(0, size[1])]
-                enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
-            numEnemies += 2
+            numWave += 1
+            if numWave % 5 != 0:
+                numEnemies += 2
+                for i in range(numEnemies):
+                    side = random.randint(0,3)
+                    if side == 0:
+                        loc = [random.randint(0, size[0]), 0]
+                    elif side == 1:
+                        loc = [random.randint(0, size[0]), size[1]]
+                    elif side == 2:
+                        loc = [0, random.randint(0, size[1])]
+                    elif side == 3:
+                        loc = [size[0],random.randint(0, size[1])]
+                    enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
+            else: 
+                numBossEnemies += 1
+                for i in range(numBossEnemies):
+                    side = random.randint(0,3)
+                    if side == 0:
+                        loc = [random.randint(0, size[0]), 0]
+                    elif side == 1:
+                        loc = [random.randint(0, size[0]), size[1]]
+                    elif side == 2:
+                        loc = [0, random.randint(0, size[1])]
+                    elif side == 3:
+                        loc = [size[0],random.randint(0, size[1])]
+                    enemies += [BossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
     
         player.move()
         player.aim(mousePos)
@@ -118,6 +137,7 @@ while True:
                     enemy.projectileCollide(p)
                     projectiles.remove(p)
                     break
+            
         
         for enemy in enemies:
             enemy.move(player.rect.center)
@@ -152,8 +172,8 @@ while True:
               
                     
                     
-            screen.fill((97, 164, 229))
-            screen.blit(bg,[0,0])
-            pygame.display.flip()
+screen.fill((97, 164, 229))
+screen.blit(bg,[0,0])
+pygame.display.flip()
              
           
