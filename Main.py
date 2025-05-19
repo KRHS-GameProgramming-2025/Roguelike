@@ -1,7 +1,7 @@
 import pygame, sys, math, random
 from Hud import *
 from Enemy import *
-from BossEnemy import *
+from MiniBossEnemy import *
 from Character import *
 from Tile import *
 
@@ -43,9 +43,9 @@ while True:
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],),
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [300, 300],)]
     numEnemies = 0
-    numBossEnemies = 0
+    numMiniBossEnemies = 0
 
-    numWave = 3
+    numWave = 0
     
     projectiles = []
     mousePos = [0,0]
@@ -110,8 +110,8 @@ while True:
                         loc = [size[0],random.randint(0, size[1])]
                     enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
             else: 
-                numBossEnemies += 1
-                for i in range(numBossEnemies):
+                numMiniBossEnemies += 1
+                for i in range(numMiniBossEnemies):
                     side = random.randint(0,3)
                     if side == 0:
                         loc = [random.randint(0, size[0]), 0]
@@ -121,7 +121,7 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [BossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
+                    enemies += [MiniBossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
     
         player.move()
         player.aim(mousePos)

@@ -1,5 +1,5 @@
 import pygame
-class BossEnemy():
+class MiniBossEnemy():
     def __init__(self,
                  image,
                  maxSpeed,
