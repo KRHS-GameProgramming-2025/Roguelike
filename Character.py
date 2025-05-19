@@ -132,6 +132,26 @@ class baseCharacter():
         
         self.image = self.images[self.frame]
     
+    
+    
+    
+    
+    def collide(self,projectile):
+        if projectile.rect.left <= self.rect.right:
+            if projectile.rect.right >= self.rect.left:
+                if projectile.rect.top <= self.rect.bottom:
+                    if projectile.rect.bottom >= self.rect.top:
+                        print('collison')
+                        self.health(-20)
+                        return True
+        return False
+    
+    
+    
+    
+    
+    
+    
     def wallCollide(self, size):
         width = size[0]
         height = size[1]
