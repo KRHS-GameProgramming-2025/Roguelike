@@ -30,7 +30,7 @@ while True:
         
         pygame.display.flip()
         clock.tick(60)
-
+    
     bg=pygame.image.load('Screen/BackGround.png')
     bg=pygame.transform.scale(bg, size)
     pygame.mixer.music.load('Sound/Music/roguelike_loop_1.mp3')
@@ -146,7 +146,7 @@ while True:
             if not enemy.living:
                 enemies.remove(enemy)
             
-        
+                
         screen.fill((97, 164, 229))
         screen.blit(bg,[0,0])
         for p in projectiles: 
@@ -157,10 +157,16 @@ while True:
         pygame.display.flip()
         clock.tick(60)
 
+    
     bg=pygame.image.load('Screen/endScreen.png')     
     bg=pygame.transform.scale(bg, size)
     pygame.mixer.music.load('Sound/SFX/gong.mp3')
     pygame.mixer.music.play(-1,0,0)
+    screen.fill((97, 164, 229))
+    screen.blit(bg,[0,0])
+    pygame.display.flip()
+    clock.tick(60)
+    
     while mode=="game over":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
