@@ -40,7 +40,7 @@ while True:
     try:
         player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
     except:
-        player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
+        player = baseCharacter("Sprite" + "/" + "Placeholders" + "/" + "Player" + "/" + "placeholder", 6, [800, 500], "player")
      
     enemies = []
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],),
