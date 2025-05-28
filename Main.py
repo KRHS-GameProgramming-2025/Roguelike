@@ -22,7 +22,7 @@ while True:
             if event.type==pygame.QUIT:
                 sys.exit();
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_RETURN:
                      mode="play"
             
         screen.fill((97, 164, 229))
@@ -37,8 +37,11 @@ while True:
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1,0,0)
     
-    player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
-    
+    try:
+        player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
+    except:
+        player = baseCharacter("Sprite" + "/" + "Placeholders" + "/" + "Player" + "/" + "placeholder", 6, [800, 500], "player")
+     
     enemies = []
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [50, 50],),
     #Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, [300, 300],)]
