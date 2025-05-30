@@ -35,7 +35,7 @@ while True:
     bg=pygame.transform.scale(bg, size)
     pygame.mixer.music.load('Sound/Music/roguelike_loop_1.mp3')
     pygame.mixer.music.set_volume(0.5)
-    pygame.mixer.music.play(-1,0,0)
+    pygame.mixer.music.play(-1,0,0)w
     
     try:
         player = baseCharacter("Sprite" + "/" + "Player" + "/" + "100x100_Walt" + "/" + "Walter", 6, [800, 500], "player")
@@ -122,19 +122,8 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [MiniBossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
-                for i in range(numEnemies):
-                    side = random.randint(0,3)
-                    if side == 0:
-                        loc = [random.randint(0, size[0]), 0]
-                    elif side == 1:
-                        loc = [random.randint(0, size[0]), size[1]]
-                    elif side == 2:
-                        loc = [0, random.randint(0, size[1])]
-                    elif side == 3:
-                        loc = [size[0],random.randint(0, size[1])]
-                    enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
-    
+                    enemies += [MiniBossEnemy("Enemy" + "/" + "Boss" + "/" + "Boss" + "/" + "placeholder", 3, loc)]
+                
         player.move()
         player.aim(mousePos)
         player.wallCollide(size)
