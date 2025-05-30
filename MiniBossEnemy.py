@@ -170,6 +170,7 @@ class MiniBossEnemy():
         
              
         self.image = self.images[self.frame]
+        self.rect = self.image.get_rect(center = self.rect.center)
                 
     def wallCollide(self, size):
         width = size[0]
