@@ -15,8 +15,8 @@ mode="start"
 while True:
     bg=pygame.image.load('Screen/startScreen.png')
     bg=pygame.transform.scale(bg, size)
-    pygame.mixer.music.load('Sound/Music/breaking_bud.mp3')
-    pygame.mixer.music.play(-1,3.5,0)
+    pygame.mixer.music.load('Sound/Music/bring_it_brah.mp3')
+    pygame.mixer.music.play(-1,0,0)
     while mode=="start":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -52,6 +52,8 @@ while True:
     
     projectiles = []
     mousePos = [0,0]
+    
+    wave = Hud("Wave: ",numWave,[0,0])
 
     while mode=="play":
         
@@ -97,6 +99,7 @@ while True:
         
         if len(enemies)==0:
             numWave += 1
+            wave.update(numWave)
             if numWave % 5 != 0:
                 numEnemies += 2
                 for i in range(numEnemies):
@@ -166,6 +169,7 @@ while True:
         screen.blit(player.image,player.rect)
         for enemy in enemies:
             screen.blit(enemy.image,enemy.rect)
+        screen.blit(wave.image,wave.rect)
         pygame.display.flip()
         clock.tick(60)
 
