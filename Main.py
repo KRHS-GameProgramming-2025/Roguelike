@@ -63,8 +63,6 @@ while True:
             if event.type==pygame.QUIT:
                 sys.exit();
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    mode="game over"
                 if event.key == pygame.K_a:
                     player.goKey("left")
                 elif event.key == pygame.K_d:
@@ -125,6 +123,17 @@ while True:
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
                     enemies += [MiniBossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
+                for i in range(numEnemies):
+                    side = random.randint(0,3)
+                    if side == 0:
+                        loc = [random.randint(0, size[0]), 0]
+                    elif side == 1:
+                        loc = [random.randint(0, size[0]), size[1]]
+                    elif side == 2:
+                        loc = [0, random.randint(0, size[1])]
+                    elif side == 3:
+                        loc = [size[0],random.randint(0, size[1])]
+                    enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
     
         player.move()
         player.aim(mousePos)
