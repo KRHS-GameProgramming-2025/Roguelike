@@ -111,7 +111,7 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
+                    enemies += [Enemy("Enemy" + "/" + "Tralalero" + "/" + "tralalero_tralala", 3, loc)]
             else: 
                 numMiniBossEnemies += 1
                 for i in range(numMiniBossEnemies):
@@ -124,7 +124,7 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [MiniBossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
+                    enemies += [MiniBossEnemy("Enemy" + "/" +"Boss" + "/"+ "Boss", 3, loc)]
     
         player.move()
         player.aim(mousePos)
