@@ -15,8 +15,8 @@ mode="start"
 while True:
     bg=pygame.image.load('Screen/startScreen.png')
     bg=pygame.transform.scale(bg, size)
-    pygame.mixer.music.load('Sound/Music/breaking_bud.mp3')
-    pygame.mixer.music.play(-1,3.5,0)
+    pygame.mixer.music.load('Sound/Music/bring_it_brah.mp3')
+    pygame.mixer.music.play(-1,0,0)
     while mode=="start":
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -52,6 +52,8 @@ while True:
     
     projectiles = []
     mousePos = [0,0]
+    
+    wave = Hud("Wave: ",numWave,[0,0])
 
     while mode=="play":
         
@@ -63,8 +65,6 @@ while True:
             if event.type==pygame.QUIT:
                 sys.exit();
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    mode="game over"
                 if event.key == pygame.K_a:
                     player.goKey("left")
                 elif event.key == pygame.K_d:
@@ -99,6 +99,7 @@ while True:
         
         if len(enemies)==0:
             numWave += 1
+            wave.update(numWave)
             if numWave % 5 != 0:
                 numEnemies += 2
                 for i in range(numEnemies):
@@ -111,7 +112,7 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [Enemy("Sprite" + "/" + "Placeholders" + "/" + "placeholder", 3, loc)]
+                    enemies += [Enemy("Enemy" + "/" + "Tralalero" + "/" + "tralalero_tralala", 3, loc)]
             else: 
                 numMiniBossEnemies += 1
                 for i in range(numMiniBossEnemies):
@@ -124,8 +125,8 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
-                    enemies += [MiniBossEnemy("Sprite" + "/" + "Placeholders" + "/" + "Enemy" + "/" + "placeholder", 3, loc)]
-    
+                    enemies += [MiniBossEnemy("Enemy" + "/" + "Boss" + "/" + "Boss" , 3, loc)]
+                
         player.move()
         player.aim(mousePos)
         player.wallCollide(size)
@@ -157,6 +158,7 @@ while True:
         screen.blit(player.image,player.rect)
         for enemy in enemies:
             screen.blit(enemy.image,enemy.rect)
+        screen.blit(wave.image,wave.rect)
         pygame.display.flip()
         clock.tick(60)
 
