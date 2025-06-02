@@ -116,10 +116,12 @@ while True:
                     if e == 0:
                         enemies += [Enemy("Enemy" + "/" + "lirili_larila.png", 1, loc)]
                     elif e == 1:
-                        enemies += [Enemy("Enemy" + "/" + "pixil-frame-0 (40).png", 2, loc)]
+                        enemies += [Enemy("Enemy" + "/" + "tralalero_tralalaDown.png", 2, loc)]
                     elif e == 2:
-                        enemies += [Enemy("Enemy" + "/" + "Chiyo-chichi.png", 3, loc)]
+                        enemies += [Enemy("Enemy" + "/" + "pixil-frame-0 (40).png", 2, loc)]
                     elif e == 3:
+                        enemies += [Enemy("Enemy" + "/" + "Chiyo-chichi.png", 3, loc)]
+                    elif e == 4:
                         enemies += [Enemy("Enemy" + "/" + "pixil-frame-0 (46).png", 2, loc)]
                     else:
                         enemies += [Enemy("Enemy" + "/" + "troll.png", 2, loc)]
