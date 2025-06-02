@@ -5,18 +5,18 @@ class Enemy():
                  maxSpeed,
                  startPosition = [0, 0],
                  characterType = None):
-        self.imagesUp = [pygame.image.load(image + "Up" + ".png")]
-        self.imagesUpRight = [pygame.image.load(image + "UpRight" + ".png")]
-        self.imagesRight = [pygame.image.load(image + "Right" + ".png")]
-        self.imagesDownRight = [pygame.image.load(image + "DownRight" + ".png")]
-        self.imagesDown = [pygame.image.load(image + "Down" + ".png")]
-        self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
-        self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
-        self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
-        self.images = self.imagesUp
-        self.frame = 0
-        self.frameMax = len(self.images)-1
-        self.image = self.images[self.frame]
+        # ~ self.imagesUp = [pygame.image.load(image + "Up" + ".png")]
+        # ~ self.imagesUpRight = [pygame.image.load(image + "UpRight" + ".png")]
+        # ~ self.imagesRight = [pygame.image.load(image + "Right" + ".png")]
+        # ~ self.imagesDownRight = [pygame.image.load(image + "DownRight" + ".png")]
+        # ~ self.imagesDown = [pygame.image.load(image + "Down" + ".png")]
+        # ~ self.imagesDownLeft = [pygame.image.load(image + "DownLeft" + ".png")]
+        # ~ self.imagesLeft = [pygame.image.load(image + "Left" + ".png")]
+        # ~ self.imagesUpLeft = [pygame.image.load(image + "UpLeft" + ".png")]
+        # ~ self.images = self.imagesUp
+        # ~ self.frame = 0
+        # ~ self.frameMax = len(self.images)-1
+        self.image = pygame.image.load(image)
         self.rect = self.image.get_rect(center = startPosition)
         
         self.speedx = 0
@@ -151,25 +151,25 @@ class Enemy():
             if self.pointingY == "down":
                 self.pointingY = "none"
                 
-        if self.pointingX == "none" and self.pointingY == "up":
-            self.images = self.imagesUp
-        elif self.pointingX == "right" and self.pointingY == "up":
-            self.images = self.imagesUpRight
-        elif self.pointingX == "right" and self.pointingY == "none":
-            self.images = self.imagesRight
-        elif self.pointingX == "right" and self.pointingY == "down":
-            self.images = self.imagesDownRight
-        elif self.pointingX == "none" and self.pointingY == "down":
-            self.images = self.imagesDown
-        elif self.pointingX == "left" and self.pointingY == "down":
-            self.images = self.imagesDownLeft
-        elif self.pointingX == "left" and self.pointingY == "none":
-            self.images = self.imagesLeft
-        elif self.pointingX == "left" and self.pointingY == "up":
-            self.images = self.imagesUpLeft
+        # ~ if self.pointingX == "none" and self.pointingY == "up":
+            # ~ self.images = self.imagesUp
+        # ~ elif self.pointingX == "right" and self.pointingY == "up":
+            # ~ self.images = self.imagesUpRight
+        # ~ elif self.pointingX == "right" and self.pointingY == "none":
+            # ~ self.images = self.imagesRight
+        # ~ elif self.pointingX == "right" and self.pointingY == "down":
+            # ~ self.images = self.imagesDownRight
+        # ~ elif self.pointingX == "none" and self.pointingY == "down":
+            # ~ self.images = self.imagesDown
+        # ~ elif self.pointingX == "left" and self.pointingY == "down":
+            # ~ self.images = self.imagesDownLeft
+        # ~ elif self.pointingX == "left" and self.pointingY == "none":
+            # ~ self.images = self.imagesLeft
+        # ~ elif self.pointingX == "left" and self.pointingY == "up":
+            # ~ self.images = self.imagesUpLeft
         
              
-        self.image = self.images[self.frame]
+        # ~ self.image = self.images[self.frame]
                 
     def wallCollide(self, size):
         width = size[0]

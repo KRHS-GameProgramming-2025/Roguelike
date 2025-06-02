@@ -101,7 +101,7 @@ while True:
             numWave += 1
             wave.update(numWave)
             if numWave % 5 != 0:
-                numEnemies += 2
+                numEnemies += 1
                 for i in range(numEnemies):
                     side = random.randint(0,3)
                     if side == 0:
@@ -112,8 +112,19 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
+                    e = random.randint(0,5)
+                    if e == 0:
+                        enemies += [Enemy("Enemy" + "/" + "lirili_larila.png", 1, loc)]
+                    elif e == 1:
+                        enemies += [Enemy("Enemy" + "/" + "pixil-frame-0 (40).png", 2, loc)]
+                    elif e == 2:
+                        enemies += [Enemy("Enemy" + "/" + "Chiyo-chichi.png", 3, loc)]
+                    elif e == 3:
+                        enemies += [Enemy("Enemy" + "/" + "pixil-frame-0 (46).png", 2, loc)]
+                    else:
+                        enemies += [Enemy("Enemy" + "/" + "troll.png", 2, loc)]
                     
-                    enemies += [Enemy("Enemy" + "/" + "Tralalero" + "/" + "tralalero_tralala", 3, loc)]
+                   
             else: 
                 numMiniBossEnemies += 1
                 for i in range(numMiniBossEnemies):
