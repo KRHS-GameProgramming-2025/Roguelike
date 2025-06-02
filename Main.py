@@ -102,7 +102,7 @@ while True:
             wave.update(numWave)
             if numWave % 5 != 0:
                 numEnemies += 2
-                for i in range(numEnemies):
+                for i in range(random.randint(numEnemies // 2,numEnemies)):
                     side = random.randint(0,3)
                     if side == 0:
                         loc = [random.randint(0, size[0]), 0]
