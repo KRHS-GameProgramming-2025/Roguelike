@@ -31,8 +31,6 @@ while True:
         pygame.display.flip()
         clock.tick(60)
     
-    bg=pygame.image.load('Screen/BackGround.png')
-    bg=pygame.transform.scale(bg, size)
     pygame.mixer.music.load('Sound/Music/roguelike_loop_1.mp3')
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1,0,0)
@@ -96,6 +94,18 @@ while True:
                 if event.button == 1:
                     projectiles += [player.fire(event.pos)]
                 mousePos = event.pos
+        
+        if numWave <= 5:
+            bg=pygame.image.load('Screen/BackGround.png')
+            bg=pygame.transform.scale(bg, size)
+            
+        elif numWave > 5 and numwave < 20:
+                bg=pygame.image.load('Screen/BackGround2.png')
+                bg=pygame.transform.scale(bg, size)
+                
+        elif numWave > 20:
+                bg=pygame.image.load('Screen/BackGround3.png')
+                bg=pygame.transform.scale(bg, size)
         
         if len(enemies)==0:
             numWave += 1
