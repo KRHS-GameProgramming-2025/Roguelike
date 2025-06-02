@@ -112,6 +112,7 @@ while True:
                         loc = [0, random.randint(0, size[1])]
                     elif side == 3:
                         loc = [size[0],random.randint(0, size[1])]
+                    
                     enemies += [Enemy("Enemy" + "/" + "Tralalero" + "/" + "tralalero_tralala", 3, loc)]
             else: 
                 numMiniBossEnemies += 1
