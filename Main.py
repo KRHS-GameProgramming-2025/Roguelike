@@ -168,7 +168,7 @@ while True:
         for enemy in enemies:
             enemy.move(player.rect.center)
             if player.collide(enemy):
-                player.health(-2)
+                player.health(-20)
                 print("hit: " + str(player.hp))
             if not enemy.living:
                 enemies.remove(enemy)
@@ -178,7 +178,7 @@ while True:
         screen.blit(bg,[0,0])
         for p in projectiles: 
             screen.blit(p.image, p.rect)
-        if player.invincible and player.invincibleTimer %2 == 0:
+        if player.invincible and player.invincibleTimer %4 == 0:
             pass
         else:
             screen.blit(player.image,player.rect)

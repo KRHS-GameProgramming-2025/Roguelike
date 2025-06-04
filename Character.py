@@ -43,7 +43,7 @@ class baseCharacter():
         
         self.invincible = False
         self.invincibleTimer = 0
-        self.invincibleTimerMax = 60*.25
+        self.invincibleTimerMax = 60*.5
 
     def update(self, mousePos, size):
         self.move()
