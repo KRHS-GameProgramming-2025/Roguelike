@@ -51,7 +51,8 @@ while True:
     projectiles = []
     mousePos = [0,0]
     
-    wave = Hud("Wave: ",numWave,[0,0])
+    hudwave = Hud("Wave: ",numWave,[0,0])
+    hudhealth = Hud("Health: ",player.hp,[0,40])
 
     while mode=="play":
         
@@ -109,7 +110,7 @@ while True:
         
         if len(enemies)==0:
             numWave += 1
-            wave.update(numWave)
+            hudwave.update(numWave)
             if numWave % 5 != 0:
                 numEnemies += 1
                 for i in range(random.randint(numEnemies // 2,numEnemies)):
@@ -169,6 +170,7 @@ while True:
             enemy.move(player.rect.center)
             if player.collide(enemy):
                 player.health(-20)
+                hudhealth.update(player.hp)
                 print("hit: " + str(player.hp))
             if not enemy.living:
                 enemies.remove(enemy)
@@ -184,7 +186,8 @@ while True:
             screen.blit(player.image,player.rect)
         for enemy in enemies:
             screen.blit(enemy.image,enemy.rect)
-        screen.blit(wave.image,wave.rect)
+        screen.blit(hudwave.image,hudwave.rect)
+        screen.blit(hudhealth.image,hudhealth.rect)
         pygame.display.flip()
         clock.tick(60)
 

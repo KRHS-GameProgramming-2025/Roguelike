@@ -34,8 +34,8 @@ class Enemy():
         self.pointingX = "none"
         self.pointingY = "up"
         
-        self.hp = 40
-        self.maxhp = 40
+        self.hp = 100
+        self.maxhp = 100
         self.living=True
 
     def move(self, target):
@@ -91,7 +91,7 @@ class Enemy():
                 if projectile.rect.top <= self.rect.bottom:
                     if projectile.rect.bottom >= self.rect.top:
                         print('collison')
-                        self.health(-20)
+                        self.health(-25)
                         return True
         return False
         
