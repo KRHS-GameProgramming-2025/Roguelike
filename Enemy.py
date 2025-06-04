@@ -34,8 +34,8 @@ class Enemy():
         self.pointingX = "none"
         self.pointingY = "up"
         
-        self.hp = 100
-        self.maxhp = 100
+        self.hp = 40
+        self.maxhp = 40
         self.living=True
 
     def move(self, target):
