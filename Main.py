@@ -99,7 +99,7 @@ while True:
             bg=pygame.image.load('Screen/BackGround.png')
             bg=pygame.transform.scale(bg, size)
             
-        elif numWave > 5 and numwave < 20:
+        elif numWave > 5 and numWave < 20:
                 bg=pygame.image.load('Screen/BackGround2.png')
                 bg=pygame.transform.scale(bg, size)
                 
