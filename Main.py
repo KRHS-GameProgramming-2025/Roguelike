@@ -153,11 +153,9 @@ while True:
                         loc = [size[0],random.randint(0, size[1])]
                     enemies += [MiniBossEnemy("Enemy" + "/" + "Boss" + "/" + "Boss" , 3, loc)]
                 
-        player.move()
-        player.aim(mousePos)
-        player.wallCollide(size)
+        player.update(mousePos, size)
+       
         
-        print(len(projectiles))
         for p in projectiles: 
             p.move()
             if p.wallCollide(size):
@@ -173,6 +171,7 @@ while True:
             enemy.move(player.rect.center)
             if player.collide(enemy):
                 player.health(-2)
+                print("hit: " + str(player.hp))
             if not enemy.living:
                 enemies.remove(enemy)
             
@@ -181,7 +180,10 @@ while True:
         screen.blit(bg,[0,0])
         for p in projectiles: 
             screen.blit(p.image, p.rect)
-        screen.blit(player.image,player.rect)
+        if player.invincible and player.invincibleTimer %2 == 0:
+            pass
+        else:
+            screen.blit(player.image,player.rect)
         for enemy in enemies:
             screen.blit(enemy.image,enemy.rect)
         screen.blit(wave.image,wave.rect)

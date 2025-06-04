@@ -40,19 +40,40 @@ class baseCharacter():
         self.hp = 100
         self.maxhp = 100
         self.living=True
+        
+        self.invincible = False
+        self.invincibleTimer = 0
+        self.invincibleTimerMax = 60*.25
 
+    def update(self, mousePos, size):
+        self.move()
+        self.aim(mousePos)
+        self.wallCollide(size)
+        
+        if self.invincible:
+            self.invincibleTimer +=1
+            if self.invincibleTimer > self.invincibleTimerMax:
+                self.invincibleTimer = 0
+                self.invincible = False
+    
     def move(self):
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
     
     
     def health(self, amount):
-        self.hp += amount
-        if self.hp > self.maxhp:
-            self.hp=self.maxhp
-        if self.hp < 1:
-            self.hp=0
-            self.living=False
+        if amount < 0:
+            if not self.invincible:
+                self.hp += amount
+                self.invincible = True
+                if self.hp < 1:
+                    self.hp=0
+                    self.living=False
+        else:
+            self.hp += amount
+            if self.hp > self.maxhp:
+                self.hp=self.maxhp
+        
             
             
     def projectileCollide(self,projectile):
@@ -141,8 +162,7 @@ class baseCharacter():
             if projectile.rect.right >= self.rect.left:
                 if projectile.rect.top <= self.rect.bottom:
                     if projectile.rect.bottom >= self.rect.top:
-                        print('collison')
-                        self.health(-20)
+                        
                         return True
         return False
     
