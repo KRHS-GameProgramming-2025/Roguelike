@@ -47,6 +47,7 @@ while True:
     numMiniBossEnemies = 0
 
     numWave = 0
+    damage = 20
     
     projectiles = []
     mousePos = [0,0]
@@ -111,6 +112,7 @@ while True:
             numWave += 1
             wave.update(numWave)
             if numWave % 5 != 0:
+                damage += 10
                 numEnemies += 2
                 for i in range(random.randint(numEnemies // 2,numEnemies)):
                     side = random.randint(0,3)
@@ -162,7 +164,7 @@ while True:
                 projectiles.remove(p)
             for enemy in enemies:
                 if p.enemyCollide(enemy):
-                    enemy.projectileCollide(p)
+                    enemy.projectileCollide(p,damage)
                     projectiles.remove(p)
                     break
             
